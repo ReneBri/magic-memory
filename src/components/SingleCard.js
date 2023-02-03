@@ -1,4 +1,7 @@
+// hooks 
 import { useEffect } from 'react'
+
+// styles
 import './SingleCard.css'
 
 

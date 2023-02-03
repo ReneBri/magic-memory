@@ -1,7 +1,13 @@
+// hooks
 import { useState, useEffect } from 'react'
-import './App.css'
+
+// components
 import SingleCard from './components/SingleCard'
 
+// styles
+import './App.css'
+
+// create an array of objects for the card images
 const cardImages = [
   { "src": "/img/helmet-1.png" },
   { "src": "/img/potion-1.png" },
@@ -18,13 +24,15 @@ function App() {
   const [choiceTwo, setChoiceTwo] = useState(null)
   const [disabled, setDisabled] = useState(false)
 
-  //shuffle cards
+  // shuffle cards
   const shuffleCards = () => {
 
+    // doubles the amount of cards
     const shuffledCards = [...cardImages, ...cardImages]
       .sort(() => Math.random() - 0.5)
       .map((card) => ({ ...card, id: Math.random(), matched: false }))
 
+      // resets player choices, cards and turns
       setChoiceOne(null)
       setChoiceTwo(null)
       setCards(shuffledCards)
@@ -32,10 +40,9 @@ function App() {
      
   }
 
-  // Handle a choice
+  // handle a player choice
   const handleChoice = async (card) => {
     choiceOne !== null ? setChoiceTwo(card) : setChoiceOne(card)
-    console.log(card)
   }
 
   //Handles the comparing of the cards + changes the matched property
@@ -44,7 +51,6 @@ function App() {
     if(choiceTwo !== null && choiceOne !== null){
       setDisabled(true)
       if(choiceTwo.src === choiceOne.src){
-        console.log("Correct")
         setCards(prevCards => {
           return prevCards.map(card => {
             if(card.src === choiceOne.src){
@@ -58,7 +64,6 @@ function App() {
 
       }else{
         setTimeout(() => handleTurnReset(), 1000)
-        console.log("Wrong")
       }
 
     }

@@ -2,6 +2,7 @@
   max-width: 860px;
   margin: 40px auto;
 }
+
 button {
   background: none;
   border: 2px solid #fff;
@@ -12,6 +13,7 @@ button {
   cursor: pointer;
   font-size: 1em;
 }
+
 button:hover {
   background: #c23866;
   color: #fff;
